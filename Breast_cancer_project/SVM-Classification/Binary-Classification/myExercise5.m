@@ -1,0 +1,10 @@
+clc;
+clear;
+close all;
+load('breast_cancer_data_binary.mat');
+[r_data,c_data] = size(breast_cancer_data_binary);
+labels = breast_cancer_data_binary(:,c_data);
+features = breast_cancer_data_binary(:,1:c_data-1);
+sum_feature = sum(features,2);
+features = features ./ repmat(sum_feature,1,c_data-1);
+libsvmwrite('breast_cancer_data_binary_binary',labels,features);

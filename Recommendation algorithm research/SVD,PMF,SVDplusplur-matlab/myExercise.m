@@ -1,0 +1,15 @@
+clc;
+clear;
+close all;
+% data_name = 'hetrec2011-lastfm-2k\';
+data_name = 'epinions_with_timestamps_11\';
+% load(strcat(data_name,'exercise_data3.mat'));
+load('Movielens.mat');
+R = R/5;
+test_set(1:end,3) = test_set(1:end,3) / 5;
+k = 10;
+iteration = 200;
+gamma = 0.00001;
+% [P,error,U] = Constrain_PMF( R_train,R_test,k,gamma,iteration);
+[mae,rmse,P] = SVD( R,test_set,k,gamma,iteration);
+% [P,error,U] = PMF( R_train,R_test,k,gamma,iteration);
